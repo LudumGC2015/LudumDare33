@@ -15,7 +15,7 @@ public class MeleeHitController : MonoBehaviour {
         area = GetComponent<BoxCollider2D>();
         playerT = GetComponentInParent<Transform>();
         playerBC = GetComponentInParent<BoxCollider2D>();
-        this.transform.position = playerT.transform.position + (playerT.transform.up * (playerBC.size.x/2 + area.size.y/2));
+        //this.transform.position = playerT.transform.position + (playerT.transform.up * (playerBC.size.x/2 + area.size.y/2));
         attacking = false;
         euphoriaController = GetComponentInParent<EuphoriaController>();
         attackCounter = 0f;
@@ -23,6 +23,7 @@ public class MeleeHitController : MonoBehaviour {
     }
 	
 	void Update () {
+        this.transform.position = playerT.position * (playerBC.size.x / 2 + area.size.y / 2);
         if (Input.GetMouseButton(0) == true && attackCounter <= 0) {
             attackCounter = attackSwing;
             attacking = true;

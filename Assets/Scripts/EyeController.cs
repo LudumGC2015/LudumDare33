@@ -9,7 +9,7 @@ public class EyeController : MonoBehaviour {
         visionRadius = GetComponent<CircleCollider2D>();
 	}
 	
-    void OnTriggerEnter (Collider other)
+    void OnTriggerEnter2D (Collider2D other)
     {
         if(other.tag == "Player")
         {
@@ -17,7 +17,7 @@ public class EyeController : MonoBehaviour {
         }
     }
     
-    void OnTriggerExit (Collider other)
+    void OnTriggerExit2D (Collider2D other)
     {
         if(other.tag == "Player") 
             {
@@ -27,7 +27,7 @@ public class EyeController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (sighted = true)
+        if (sighted == true)
         {
             // Aqui la logica sospechosa
         }

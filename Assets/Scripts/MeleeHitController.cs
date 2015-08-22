@@ -5,6 +5,7 @@ public class MeleeHitController : MonoBehaviour {
     BoxCollider2D area;
     Transform playerT;
     BoxCollider2D playerBC;
+    public EuphoriaController euphoriaController;
     bool attacking;
 
 
@@ -14,6 +15,7 @@ public class MeleeHitController : MonoBehaviour {
         playerBC = GetComponentInParent<BoxCollider2D>();
         this.transform.position = playerT.transform.position + (playerT.transform.up * (playerBC.size.x/2 + area.size.y/2));
         attacking = false;
+        euphoriaController = GetComponentInParent<EuphoriaController>();
     }
 	
 	void Update () {
@@ -24,7 +26,8 @@ public class MeleeHitController : MonoBehaviour {
 
     void OnTriggerStay (Collider other) {
         if(other.tag == "Enemy") {
-            //Logica euphoria
+            DestroyObject(other);
+            euphoriaController.IncrementEuphoria(20);
         }
     }
     

@@ -4,23 +4,19 @@ using System.Collections;
 public class GunController : MonoBehaviour {
     protected Transform gun;
     protected Transform playerPosition;
+    public EuphoriaController euphoriaController;
     EyeController eye;
     CopBehaviour copBehaviour;
     float reloadTime = 2.2f;
     public float reloadCounter = 0f;
     public Transform BulletTrailPrefab;
 
-    void Start () {
-
-
-    }
-
     void Effect() {
         Instantiate(BulletTrailPrefab, this.transform.position, this.transform.rotation);
     }
 
     void Shoot() {
-        //el jugador recibe daño
+        euphoriaController.DecrementEuphoria(10);
 
     }
     
@@ -30,7 +26,6 @@ public class GunController : MonoBehaviour {
         copBehaviour = GetComponent<CopBehaviour>();
     }
 
-	// Update is called once per frame
 	void Update () {
         if (reloadCounter > 0f) {
             reloadCounter -= Time.deltaTime;

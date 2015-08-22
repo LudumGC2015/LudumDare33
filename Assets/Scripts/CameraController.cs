@@ -4,16 +4,15 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 	private Vector3 distanceToPlayer;
-	[SerializeField]
 	private GameObject player;
 
-	// Use this for initialization
-	void Start () {
+    public void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
 		this.distanceToPlayer = this.transform.position - this.player.transform.position;
 	}
 	
 
-	void LateUpdate () {
+	public void LateUpdate () {
 		this.transform.position = this.player.transform.position + this.distanceToPlayer;
 	}
 }

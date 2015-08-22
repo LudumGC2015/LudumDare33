@@ -6,9 +6,15 @@ public class CivilianBehaviour : NPCBehaviour {
     private Vector2 actualDirection;
 
     [SerializeField]
-    private float speed = 4f;
+    private float walkSpeed = 2f;
+    [SerializeField]
+    private float runSpeed = 4f;
 
+<<<<<<< HEAD
     public new void Start() {
+=======
+    new public void Start() {
+>>>>>>> fd56695d8b63f7e5844a058f243e3aa6b53d904a
         base.Start();
         StartCoroutine("ChangeDirection");
     }
@@ -25,11 +31,11 @@ public class CivilianBehaviour : NPCBehaviour {
     public void Update() {
         Vector2 movement;
         if (this.onAlert) {
-            movement = (playerPosition.position - transform.position) * speed;
+            movement = (transform.position - playerPosition.position).normalized * runSpeed;
         } else {
             Debug.Log("Direction: " + actualDirection);
-            movement = actualDirection * speed;
+            movement = actualDirection.normalized * walkSpeed;
         }
-        rigidBody.velocity = movement.normalized;
+        rigidBody.velocity = movement;
     }
 }

@@ -8,12 +8,14 @@ public class EuphoriaController : MonoBehaviour {
 	private Image euphoriaBar;
 	private float euphoriaValue;
 	private float euphoriaMaximumValue;
+    private MoveController moveController;
 
 	public void Start () {
 		this.euphoriaBar	= this.GetComponent<Image>();
 		this.player 		= GameObject.FindGameObjectWithTag("Player");
 		this.euphoriaValue 	= 0f;
 		this.euphoriaMaximumValue = 100f;
+        moveController = GetComponent<MoveController>();
 		UpdateEuphoriaBar ();
 	}
 
@@ -42,11 +44,11 @@ public class EuphoriaController : MonoBehaviour {
 	public void Update () {
 
         if (euphoriaValue == 100) {
-            this.player.GetComponent<MoveController>().SetEuphoric();
+            moveController.SetEuphoric();
         } else if (euphoriaValue == 0) {
-            this.player.GetComponent<MoveController>().SetNotEuphoric();
+           moveController.SetNotEuphoric();
         }	
-        if(euphoriaValue < 0) {
+        if(euphoriaValue > 0 && moveController.IsEuphoric()) {
             euphoriaValue -= 10*Time.deltaTime;
         }
 	}

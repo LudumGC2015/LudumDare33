@@ -25,6 +25,10 @@ public class MoveController : MonoBehaviour {
 		this.isEuphoric = false;
 	}
 
+    public bool IsEuphoric() {
+        return isEuphoric;
+    }
+
 	public void FixedUpdate(){
 		Vector2 movement = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 

@@ -17,7 +17,6 @@ public class GunController : MonoBehaviour {
 
     void Shoot() {
         euphoriaController.DecrementEuphoria(10);
-
     }
     
     void Awake () {

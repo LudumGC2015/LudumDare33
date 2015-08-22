@@ -32,4 +32,7 @@ public class CopBehaviour : NPCBehaviour {
             patrolEndPosition = temp;
         }
     }
+    public bool IsOnAlert() {
+        return onAlert;
+    }
 }

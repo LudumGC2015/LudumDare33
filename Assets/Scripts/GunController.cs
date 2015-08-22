@@ -5,6 +5,7 @@ public class GunController : MonoBehaviour {
     protected Transform gun;
     protected Transform playerPosition;
     EyeController eye;
+    CopBehaviour copBehaviour;
     float reloadTime = 2.2f;
     public float reloadCounter = 0f;
     public Transform BulletTrailPrefab;
@@ -26,13 +27,14 @@ public class GunController : MonoBehaviour {
     void Awake () {
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         eye = GetComponentInChildren    <EyeController>();
+        copBehaviour = GetComponent<CopBehaviour>();
     }
 
 	// Update is called once per frame
 	void Update () {
         if (reloadCounter > 0f) {
             reloadCounter -= Time.deltaTime;
-        } else if (eye.PlayerInSight() == true) {
+        } else if (eye.PlayerInSight() == true && copBehaviour.IsOnAlert() == true) {
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, playerPosition.position);
             Effect();
             reloadCounter = reloadTime;

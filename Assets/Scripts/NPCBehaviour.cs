@@ -7,6 +7,7 @@ public class NPCBehaviour : MonoBehaviour {
     protected Rigidbody2D rigidBody;
     protected Transform playerPosition;
     protected bool onAlert;
+    protected EyeController eyeController;
 
     public void Start() {
         rigidBody = GetComponent<Rigidbody2D>();

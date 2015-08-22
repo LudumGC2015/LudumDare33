@@ -41,10 +41,13 @@ public class EuphoriaController : MonoBehaviour {
 
 	public void Update () {
 
-		if (euphoriaValue < 1) {
-			this.player.GetComponent<MoveController> ().SetNotEuphoric ();
-		} else {
-			this.player.GetComponent<MoveController> ().SetEuphoric ();
-		}	
+        if (euphoriaValue == 100) {
+            this.player.GetComponent<MoveController>().SetEuphoric();
+        } else if (euphoriaValue == 0) {
+            this.player.GetComponent<MoveController>().SetNotEuphoric();
+        }	
+        if(euphoriaValue < 0) {
+            euphoriaValue -= 10*Time.deltaTime;
+        }
 	}
 }

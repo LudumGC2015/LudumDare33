@@ -500,4 +500,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297babde522106f408472f3a10e8fcc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reloadCounter: 0
   BulletTrailPrefab: {fileID: 420672, guid: dd041e9302ad1f44eacd0c7d462074eb, type: 2}

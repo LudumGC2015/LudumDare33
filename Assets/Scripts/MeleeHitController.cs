@@ -28,13 +28,13 @@ public class MeleeHitController : MonoBehaviour {
             attacking = true;
             //Llamar a la animacion de ataque
         } else if (attackCounter <= 0) {
-            attacking = false;
+            //attacking = false;
         } else {
             attackCounter -= Time.deltaTime;
         }
     }
 
-    void OnTriggerStay (Collider other) {
+    void OnTriggerEnter (Collider other) {
         if(other.gameObject.tag == "Enemy" && attacking == true) {
             Object.Destroy(other.gameObject);
             euphoriaController.IncrementEuphoria(20);

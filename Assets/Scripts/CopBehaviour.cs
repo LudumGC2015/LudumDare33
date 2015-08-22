@@ -10,8 +10,15 @@ public class CopBehaviour : NPCBehaviour {
         eyeController = GetComponentInChildren<EyeController>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	public void Update () {
+	    if (onAlert) {
+
+        } else {
+            Patrol();
+        }
 	}
+
+    public void Patrol() {
+
+    }
 }

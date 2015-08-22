@@ -18,14 +18,14 @@ public class CopBehaviour : NPCBehaviour {
 	
 	public void Update () {
 	    if (onAlert) {
-            Seek(runSpeed, playerPosition);
+            Seek(runSpeed, playerTransform.position);
         } else {
             Patrol();
         }
 	}
 
     public void Patrol() {
-        Seek(walkSpeed, patrolEndPosition);
+        SeekAndAvoidCollission(walkSpeed, patrolEndPosition);
         if (Vector3.Distance(transform.position, patrolEndPosition) < 0.1f) {
             Vector3 temp = patrolStartPosition;
             patrolStartPosition = patrolEndPosition;

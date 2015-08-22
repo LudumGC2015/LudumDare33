@@ -26,13 +26,18 @@ public class CivilianBehaviour : NPCBehaviour {
     }
 
     public void Update() {
-        Vector2 movement;
         if (this.onAlert) {
-            movement = (transform.position - playerPosition.position).normalized * runSpeed;
+            Flee(runSpeed, playerPosition);
         } else {
-            Debug.Log("Direction: " + actualDirection);
-            movement = actualDirection.normalized * walkSpeed;
+            Wander();
         }
+        
+    }
+
+    public void Wander() {
+        Vector2 movement = actualDirection.normalized * walkSpeed;
         rigidBody.velocity = movement;
     }
+
+
 }

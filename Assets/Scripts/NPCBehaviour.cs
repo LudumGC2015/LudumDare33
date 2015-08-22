@@ -6,7 +6,7 @@ using System.Collections;
 public class NPCBehaviour : MonoBehaviour {
     protected Rigidbody2D rigidBody;
     protected Transform playerPosition;
-    protected bool onAlert;
+    [SerializeField]protected bool onAlert;
     protected EyeController eyeController;
 
     public void Start() {

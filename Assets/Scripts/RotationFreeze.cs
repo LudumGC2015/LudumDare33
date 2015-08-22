@@ -11,7 +11,7 @@ public class RotationFreeze : MonoBehaviour {
 	}
 	
 	
-	void Update () {
+	void FixedUpdate () {
         transform.rotation = rotation;
 	}
 }

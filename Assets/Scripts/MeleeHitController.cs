@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MeleeHitController : MonoBehaviour {
-    BoxCollider2D area;
+/*    BoxCollider2D area;
     Transform playerT;
     BoxCollider2D playerBC;
     public EuphoriaController euphoriaController;
@@ -30,5 +30,5 @@ public class MeleeHitController : MonoBehaviour {
             euphoriaController.IncrementEuphoria(20);
         }
     }
-    
+    */
 }

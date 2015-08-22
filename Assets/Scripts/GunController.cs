@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GunController : MonoBehaviour {
-    protected Transform gun;
+/*    protected Transform gun;
     protected Transform playerPosition;
     public EuphoriaController euphoriaController;
     EyeController eye;
@@ -16,7 +16,7 @@ public class GunController : MonoBehaviour {
     }
 
     void Shoot() {
-        euphoriaController.DecrementEuphoria(10);
+       euphoriaController.DecrementEuphoria(10);
     }
     
     void Awake () {
@@ -36,5 +36,5 @@ public class GunController : MonoBehaviour {
                 Shoot();
             }
         }
-    }  
+    }  */
 }

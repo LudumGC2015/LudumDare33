@@ -14,6 +14,7 @@ public class MoveController : MonoBehaviour {
 	void Start () {
 		this.speed = 4f;
 		this.rigidBody = GetComponent<Rigidbody2D> ();
+		this.rigidBody.gravityScale = 0f;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +24,6 @@ public class MoveController : MonoBehaviour {
 
 	//--FixedUpdate is called before performing any physics calculations
 	void FixedUpdate(){
-
 		Vector2 movement = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 		this.rigidBody.velocity = movement.normalized * this.speed; 
 	}

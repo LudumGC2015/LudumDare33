@@ -7,5 +7,5 @@ public class NPCBehaviour : MonoBehaviour {
     protected Rigidbody2D rigidBody;
     protected Transform playerPosition;
     protected bool onAlert;
-    protected CircleCollider2D eyes;
+    protected EyeController eyeController;
 }

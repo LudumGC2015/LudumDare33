@@ -14,6 +14,7 @@ public class MoveController : MonoBehaviour {
 	void Start () {
 		this.speed = 4f;
 		this.rigidBody = GetComponent<Rigidbody2D> ();
+		this.rigidBody.gravityScale = 0f;
 	}
 	
 	// Update is called once per frame

@@ -37,7 +37,8 @@ public class MoveController : MonoBehaviour {
 		} else {
 			this.rigidBody.velocity = movement.normalized * this.walkSpeed; 
 		}
-        transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
+        if (rigidBody.velocity != Vector2.zero)
+            transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
         Debug.DrawLine(transform.position, transform.position + transform.forward * 5f, Color.green);
 	}
 }

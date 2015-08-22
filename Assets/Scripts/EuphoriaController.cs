@@ -11,12 +11,19 @@ public class EuphoriaController : MonoBehaviour {
     private MoveController moveController;
 
 	public void Start () {
-		this.euphoriaBar = this.GetComponent<Image>();
-		this.player = GameObject.FindGameObjectWithTag("Player");
-		this.euphoriaValue = 0f;
+		PrepareEuphoriaBar ();
+		this.player 		= GameObject.FindGameObjectWithTag("Player");
+		this.euphoriaValue 	= 0f;
 		this.euphoriaMaximumValue = 100f;
         moveController = GetComponent<MoveController>();
-		UpdateEuphoriaBar();
+		UpdateEuphoriaBar ();
+	}
+
+	private void PrepareEuphoriaBar(){
+		this.euphoriaBar		= this.GetComponent<Image>();
+		this.euphoriaBar.type 	= Image.Type.Filled;
+		this.euphoriaBar.fillMethod = Image.FillMethod.Horizontal;
+		this.euphoriaBar.fillOrigin = 0; //-- 0 means Left and 1 means Right
 	}
 
 	private void UpdateEuphoriaBar(){
@@ -49,7 +56,7 @@ public class EuphoriaController : MonoBehaviour {
            moveController.SetNotEuphoric();
         }	
         if(euphoriaValue > 0 && moveController.IsEuphoric()) {
-            euphoriaValue -= 5*Time.deltaTime;
+            euphoriaValue -= 10*Time.deltaTime;
         }
 	}
 }

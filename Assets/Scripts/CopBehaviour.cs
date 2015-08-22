@@ -2,23 +2,34 @@
 using System.Collections;
 
 public class CopBehaviour : NPCBehaviour {
-    
-	// Use this for initialization
+
+    private Vector2 patrolStartPosition;
+    private Vector2 patrolEndPosition;
+    private float walkSpeed = 2f;
+    private float runSpeed = 4f;
+
 	new void Start () {
         base.Start();
         onAlert = false;
         eyeController = GetComponentInChildren<EyeController>();
+        patrolStartPosition = transform.position;
+        patrolEndPosition = transform.position + transform.right * 5f;
 	}
 	
 	public void Update () {
 	    if (onAlert) {
-
+            Seek(runSpeed, playerPosition);
         } else {
             Patrol();
         }
 	}
 
     public void Patrol() {
-
+        Seek(walkSpeed, patrolEndPosition);
+        if (Vector3.Distance(transform.position, patrolEndPosition) < 0.1f) {
+            Vector3 temp = patrolStartPosition;
+            patrolStartPosition = patrolEndPosition;
+            patrolEndPosition = temp;
+        }
     }
 }

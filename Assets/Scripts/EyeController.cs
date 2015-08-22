@@ -32,4 +32,9 @@ public class EyeController : MonoBehaviour {
             // Aqui la logica sospechosa
         }
 	}
+
+    public bool PlayerInSight()
+    {
+        return sighted;
+    }
 }

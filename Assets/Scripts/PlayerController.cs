@@ -2,21 +2,17 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-    private int score;
     private int euphoria;
     private bool euphoric;
 
-	void Start () {
-	
+	void Awake () {
+        euphoric = false;
+        euphoria = 0;
 	}
 
     void Update () {
 	
 	}
-
-    void addScore(int amount) {
-        score += amount;
-    }
 
     void takeDamage(int amount) {
         if (euphoric) {
@@ -26,6 +22,11 @@ public class PlayerController : MonoBehaviour {
             //Llamada a muerte
         }
     }
+
+    void gainEuphoria(int amount) {
+        euphoria += amount;
+    }
 }
+
 
 

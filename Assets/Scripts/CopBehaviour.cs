@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class CopBehaviour : NPCBehaviour {
-
-	new public void Start () {
+    
+	// Use this for initialization
+	new void Start () {
         base.Start();
         onAlert = false;
         eyeController = GetComponentInChildren<EyeController>();

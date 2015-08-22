@@ -1,33 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class EuphoriaController : MonoBehaviour {
-
-	private GameObject player;
-	private Image euphoriaBar;
+	
 	private float euphoriaValue;
 	private float euphoriaMaximumValue;
-
+	private MoveController playerMoveController;
+	
 	public void Start () {
-		this.euphoriaBar	= this.GetComponent<Image>();
-		this.player 		= GameObject.FindGameObjectWithTag("Player");
-		this.euphoriaValue 	= 0f;
+		this.euphoriaValue  = 0f;
 		this.euphoriaMaximumValue = 100f;
-		UpdateEuphoriaBar ();
-	}
-
-	private void UpdateEuphoriaBar(){
-		this.euphoriaBar.fillAmount = euphoriaValue / 100f;
+		this.playerMoveController = this.GetComponent<MoveController>();
 	}
 
 	public void IncrementEuphoria (float increment){
+
 		if (increment + euphoriaValue > euphoriaMaximumValue){
 			this.euphoriaValue = this.euphoriaMaximumValue;
 		}else {
 			this.euphoriaValue += increment;
 		}
-		UpdateEuphoriaBar ();
 	}
 
 	public void DecrementEuphoria (float decrement){
@@ -36,15 +28,21 @@ public class EuphoriaController : MonoBehaviour {
 		}else {
 			this.euphoriaValue -= decrement;
 		}
-		UpdateEuphoriaBar ();
+	}
+
+	public float getEuphoriaValue(){
+		return this.euphoriaValue;
 	}
 
 	public void Update () {
 
-		if (euphoriaValue < 1) {
-			this.player.GetComponent<MoveController> ().SetNotEuphoric ();
-		} else {
-			this.player.GetComponent<MoveController> ().SetEuphoric ();
-		}	
+        if (euphoriaValue == 100) {
+			playerMoveController.SetEuphoric();
+        } else if (euphoriaValue == 0) {
+			playerMoveController.SetNotEuphoric();
+        }	
+        if(euphoriaValue > 0 && playerMoveController.IsEuphoric()) {
+            euphoriaValue -= 10*Time.deltaTime;
+        }
 	}
 }

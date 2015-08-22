@@ -13,6 +13,6 @@ public class CameraController : MonoBehaviour {
 	
 
 	public void LateUpdate () {
-		this.transform.position = this.player.transform.position + this.distanceToPlayer;
+		this.transform.position = player.transform.position + this.distanceToPlayer;
 	}
 }

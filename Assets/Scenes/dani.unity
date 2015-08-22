@@ -128,7 +128,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: .5}
+  m_Size: {x: .699999988, y: 1.20000005}
 --- !u!114 &134007684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,10 +188,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1e2110cdde11424cb9cfbd25018cb2f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &465006684 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 121778, guid: d1e2110cdde11424cb9cfbd25018cb2f, type: 2}
+  m_PrefabInternal: {fileID: 233935416}
 --- !u!4 &465006685 stripped
 Transform:
   m_PrefabParentObject: {fileID: 419540, guid: d1e2110cdde11424cb9cfbd25018cb2f, type: 2}
   m_PrefabInternal: {fileID: 233935416}
+--- !u!114 &465006686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 465006684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b11ccdab6240c42b4e3a3d3cff9812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &863555857
 Prefab:
   m_ObjectHideFlags: 0

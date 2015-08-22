@@ -10,11 +10,18 @@ public class EuphoriaController : MonoBehaviour {
 	private float euphoriaMaximumValue;
 
 	public void Start () {
-		this.euphoriaBar	= this.GetComponent<Image>();
+		PrepareEuphoriaBar ();
 		this.player 		= GameObject.FindGameObjectWithTag("Player");
 		this.euphoriaValue 	= 0f;
 		this.euphoriaMaximumValue = 100f;
 		UpdateEuphoriaBar ();
+	}
+
+	private void PrepareEuphoriaBar(){
+		this.euphoriaBar		= this.GetComponent<Image>();
+		this.euphoriaBar.type 	= Image.Type.Filled;
+		this.euphoriaBar.fillMethod = Image.FillMethod.Horizontal;
+		this.euphoriaBar.fillOrigin = 0; //-- 0 means Left and 1 means Right
 	}
 
 	private void UpdateEuphoriaBar(){

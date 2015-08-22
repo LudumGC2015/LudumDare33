@@ -37,8 +37,8 @@ public class NPCBehaviour : MonoBehaviour
     {
         Vector3 seekMovement = GetSeekMovement(targetPosition);
         Vector3 avoidMovement = GetAvoidCollissionMovement();
-        /*Debug.Log("Seek: " + seekMovement);
-        Debug.Log("Avoid: " + avoidMovement);*/
+        Debug.Log("Seek: " + seekMovement);
+        Debug.Log("Avoid: " + avoidMovement);
         rigidBody.velocity = (seekMovement + avoidMovement).normalized * speed;
         transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
     }

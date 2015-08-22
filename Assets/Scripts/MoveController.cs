@@ -9,16 +9,29 @@ public class MoveController : MonoBehaviour {
 	[SerializeField]
 	private float walkSpeed = 2f;
     private float euphoricSpeed = 6f;
+	private bool isEuphoric = false;
 
-	void Start () {
+	public void Start () {
 		this.walkSpeed = 4f;
 		this.rigidBody = GetComponent<Rigidbody2D> ();
 		this.rigidBody.gravityScale = 0f;
 	}
 
+	public void SetEuphoric(){
+		this.isEuphoric = true;
+	}
 
-	void FixedUpdate(){
+	public void SetNotEuphoric(){
+		this.isEuphoric = false;
+	}
+
+	public void FixedUpdate(){
 		Vector2 movement = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
-		this.rigidBody.velocity = movement.normalized * this.walkSpeed; 
+
+		if (isEuphoric) {
+			this.rigidBody.velocity = movement.normalized * this.euphoricSpeed; 
+		} else {
+			this.rigidBody.velocity = movement.normalized * this.walkSpeed; 
+		}
 	}
 }

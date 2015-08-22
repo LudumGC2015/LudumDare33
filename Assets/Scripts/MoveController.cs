@@ -29,7 +29,7 @@ public class MoveController : MonoBehaviour {
         return isEuphoric;
     }
 
-	public void FixedUpdate(){
+	public void Update(){
 		Vector2 movement = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 
 		if (isEuphoric) {
@@ -37,5 +37,7 @@ public class MoveController : MonoBehaviour {
 		} else {
 			this.rigidBody.velocity = movement.normalized * this.walkSpeed; 
 		}
+        transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
+        Debug.DrawLine(transform.position, transform.position + transform.forward * 5f, Color.green);
 	}
 }

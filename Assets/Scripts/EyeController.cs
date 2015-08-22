@@ -3,8 +3,8 @@ using System.Collections;
 
 public class EyeController : MonoBehaviour {
     protected CircleCollider2D visionRadius;
-    protected bool sighted;
-    protected bool suspicious;
+    protected bool sighted = false;
+    protected bool suspicious = false;
     void Start () {
         visionRadius = GetComponent<CircleCollider2D>();
 	}

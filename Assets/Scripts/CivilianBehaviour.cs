@@ -10,7 +10,6 @@ public class CivilianBehaviour : NPCBehaviour {
     [SerializeField]
     private float runSpeed = 4f;
 
-
     public new void Start() {
         base.Start();
         StartCoroutine("ChangeDirection");
@@ -27,7 +26,7 @@ public class CivilianBehaviour : NPCBehaviour {
 
     public void Update() {
         if (this.onAlert) {
-            Flee(runSpeed, playerPosition);
+            Flee(runSpeed, playerTransform.position);
         } else {
             Wander();
         }

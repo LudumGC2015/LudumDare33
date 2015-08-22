@@ -8,4 +8,9 @@ public class NPCBehaviour : MonoBehaviour {
     protected Transform playerPosition;
     protected bool onAlert;
     protected EyeController eyeController;
+
+    public void Start() {
+        rigidBody = GetComponent<Rigidbody2D>();
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 }

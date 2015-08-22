@@ -8,7 +8,7 @@ public class MeleeHitController : MonoBehaviour {
     float attackSwing;
     float attackCounter;
     public EuphoriaController euphoriaController;
-    bool attacking;
+    public bool attacking;
 
 
 	void Awake () {
@@ -23,18 +23,20 @@ public class MeleeHitController : MonoBehaviour {
     }
 	
 	void Update () {
-        if (Input.GetMouseButton(0) == true && attackCounter >= 0) {
+        if (Input.GetMouseButton(0) == true && attackCounter <= 0) {
+            attackCounter = attackSwing;
             attacking = true;
             //Llamar a la animacion de ataque
-            attackCounter = attackSwing;
+        } else if (attackCounter <= 0) {
+            attacking = false;
         } else {
             attackCounter -= Time.deltaTime;
         }
     }
 
     void OnTriggerStay (Collider other) {
-        if(other.tag == "Enemy" && attacking == true) {
-            DestroyObject(other);
+        if(other.gameObject.tag == "Enemy" && attacking == true) {
+            Object.Destroy(other.gameObject);
             euphoriaController.IncrementEuphoria(20);
         }
     }

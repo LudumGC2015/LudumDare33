@@ -7,4 +7,9 @@ public class NPCBehaviour : MonoBehaviour {
     protected Rigidbody2D rigidBody;
     protected Transform playerPosition;
     protected bool onAlert;
+
+    public void Start() {
+        rigidBody = GetComponent<Rigidbody2D>();
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 }

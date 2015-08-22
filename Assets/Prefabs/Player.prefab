@@ -11,6 +11,7 @@ GameObject:
   - 50: {fileID: 5054632}
   - 61: {fileID: 6166250}
   - 114: {fileID: 11441594}
+  - 114: {fileID: 11425630}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -35,6 +36,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &181832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 452970}
+  - 61: {fileID: 6134714}
+  - 114: {fileID: 11406104}
+  m_Layer: 0
+  m_Name: MeleeAreaNormal
+  m_TagString: Weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &419540
 Transform:
   m_ObjectHideFlags: 1
@@ -42,10 +60,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.40999997, y: 2.44000006, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428268}
+  - {fileID: 452970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &428268
@@ -60,6 +79,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419540}
   m_RootOrder: 0
+--- !u!4 &452970
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419540}
+  m_RootOrder: 1
 --- !u!50 &5054632
 Rigidbody2D:
   serializedVersion: 2
@@ -76,6 +107,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &6134714
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181832}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: .699999988, y: 1.20000005}
 --- !u!61 &6166250
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -98,6 +142,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ca4edd62661b264f81b4bad96da72ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11406104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e588210b0750f047b4012e1f6943e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  euphoriaController: {fileID: 0}
+  attacking: 0
+--- !u!114 &11425630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b11ccdab6240c42b4e3a3d3cff9812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11441594

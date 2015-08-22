@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
 	
 	}
 
-    void takeDamage(int amount) {
+    public void takeDamage(int amount) {
         if (euphoric) {
             euphoria -= amount;
         }
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void gainEuphoria(int amount) {
+    public void gainEuphoria(int amount) {
         euphoria += amount;
     }
 }

@@ -8,7 +8,7 @@ public class CivilianBehaviour : NPCBehaviour {
     [SerializeField]
     private float speed = 4f;
 
-    public void Start() {
+    public new void Start() {
         base.Start();
         StartCoroutine("ChangeDirection");
     }

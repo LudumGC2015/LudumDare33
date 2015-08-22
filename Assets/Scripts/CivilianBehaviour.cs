@@ -2,5 +2,5 @@
 using System.Collections;
 
 public class CivilianBehaviour : NPCBehaviour {
-
+    
 }

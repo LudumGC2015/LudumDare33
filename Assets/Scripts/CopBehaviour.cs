@@ -16,7 +16,8 @@ public class CopBehaviour : NPCBehaviour {
         patrolEndPosition = transform.position + transform.right * 5f;
 	}
 	
-	public void Update () {
+	new public void Update () {
+        base.Update();
 	    if (onAlert) {
             Seek(runSpeed, playerTransform.position);
         } else {
@@ -25,7 +26,7 @@ public class CopBehaviour : NPCBehaviour {
 	}
 
     public void Patrol() {
-        SeekAndAvoidCollission(walkSpeed, patrolEndPosition);
+        Seek(walkSpeed, patrolEndPosition);
         if (Vector3.Distance(transform.position, patrolEndPosition) < 0.1f) {
             Vector3 temp = patrolStartPosition;
             patrolStartPosition = patrolEndPosition;

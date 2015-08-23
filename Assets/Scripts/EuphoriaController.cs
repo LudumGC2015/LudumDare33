@@ -1,47 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EuphoriaController : MonoBehaviour
-{
+public class EuphoriaController : MonoBehaviour {
     private float euphoriaValue;
     private float maxEuphoria = 100f;
-    private MoveController moveController;
+    private bool isEuphoric;
 
-    public void Start()
-    {
+    public void Start() {
         euphoriaValue = 0f;
-        moveController = GetComponent<MoveController>();
+        isEuphoric = false;
     }
 
-    public void IncrementEuphoria(float increment)
-    {
+    public void IncrementEuphoria(float increment) {
 
         euphoriaValue = Mathf.Clamp(euphoriaValue + increment, 0f, maxEuphoria);
     }
 
-    public void DecrementEuphoria(float decrement)
-    {
+    public void DecrementEuphoria(float decrement) {
         euphoriaValue = Mathf.Clamp(euphoriaValue - decrement, 0f, maxEuphoria);
     }
 
-    public float getEuphoriaValue()
-    {
+    public float getEuphoriaValue() {
         return euphoriaValue;
     }
 
-    public void Update()
-    {
+    public bool IsEuphoric() {
+        return isEuphoric;
+    }
 
-        if (euphoriaValue >= 100)
-        {
-            moveController.SetEuphoric();
+    public void Update() {
+
+        if (euphoriaValue >= 100) {
+            isEuphoric = true;
         }
-        else if (euphoriaValue <= 0)
-        {
-            moveController.SetNotEuphoric();
+        else if (euphoriaValue <= 0) {
+            isEuphoric = false;
         }
-        if (euphoriaValue > 0 && moveController.IsEuphoric())
-        {
+        if (euphoriaValue > 0 && isEuphoric) {
             euphoriaValue -= 10 * Time.deltaTime;
         }
     }

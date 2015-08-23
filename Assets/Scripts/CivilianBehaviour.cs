@@ -24,7 +24,8 @@ public class CivilianBehaviour : NPCBehaviour {
         }
     }
 
-    public void Update() {
+    new public void Update() {
+        base.Update();
         if (this.onAlert) {
             Flee(runSpeed, playerTransform.position);
         } else {

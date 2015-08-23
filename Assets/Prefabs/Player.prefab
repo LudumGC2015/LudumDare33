@@ -12,7 +12,8 @@ GameObject:
   - 61: {fileID: 6166250}
   - 114: {fileID: 11441594}
   - 114: {fileID: 11425630}
-  m_Layer: 0
+  - 114: {fileID: 11467988}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -61,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 121778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 428268}
   - {fileID: 452970}
@@ -132,7 +133,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .5, y: 1}
 --- !u!114 &11403724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e588210b0750f047b4012e1f6943e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  euphoriaController: {fileID: 0}
   attacking: 0
 --- !u!114 &11425630
 MonoBehaviour:
@@ -180,6 +180,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
+  euphoricSpeed: 6
+--- !u!114 &11467988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77e808276fa87b44a08743c82bab95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21224442
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -218,6 +230,18 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 74bc141cae626184798368f5875db986,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 121778}

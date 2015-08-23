@@ -3,47 +3,53 @@ using System.Collections;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class NPCBehaviour : MonoBehaviour
-{
+public class NPCBehaviour : MonoBehaviour {
     protected Rigidbody2D rigidBody;
     protected Transform playerTransform;
-    protected EuphoriaController playerMoveController;
-    [SerializeField]
+    protected EuphoriaController playerEuphoriaController;
+    protected MeleeHitController meleeHitController;
     protected bool onAlert;
     protected float sightRadius = 5f;
     protected EyeController eyeController;
     private Quaternion rotation;
 
-    public void Start()
-    {
+    public void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        playerMoveController = GameObject.FindGameObjectWithTag("Player").GetComponent<EuphoriaController>();
+        playerEuphoriaController = GameObject.FindGameObjectWithTag("Player").GetComponent<EuphoriaController>();
+        meleeHitController = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<MeleeHitController>();
+        eyeController = GetComponentInChildren<EyeController>();
+
+        if (eyeController == null) {
+            Debug.Log("EyeController");
+        }
+        if (meleeHitController == null) {
+            Debug.Log("MeleeHitController");
+        }
+        if (eyeController == null) {
+            Debug.Log("EyeController");
+        }
     }
 
-    public void Update()
-    {
+    public void Update() {
         if (!onAlert)
-            onAlert = playerMoveController.IsEuphoric();
-        
+            onAlert = eyeController.PlayerInSight() 
+                && (playerEuphoriaController.IsEuphoric() || meleeHitController.IsAttacking());
     }
 
-    protected void Seek(float speed, Vector3 targetPosition)
-    {
+    protected void Seek(float speed, Vector3 targetPosition) {
         Vector2 movement = GetSeekMovement(targetPosition).normalized * speed;
         rigidBody.velocity = movement;
         rotation = Quaternion.LookRotation(movement);
     }
 
-    protected void Flee(float speed, Vector3 targetPosition)
-    {
+    protected void Flee(float speed, Vector3 targetPosition) {
         Vector2 movement = GetFleeMovement(targetPosition).normalized * speed;
         rigidBody.velocity = movement;
         rotation = Quaternion.LookRotation(movement);
     }
 
-    protected void SeekAndAvoidCollission(float speed, Vector3 targetPosition)
-    {
+    protected void SeekAndAvoidCollission(float speed, Vector3 targetPosition) {
         Vector3 seekMovement = GetSeekMovement(targetPosition);
         Vector3 avoidMovement = GetAvoidCollissionMovement();
         Debug.Log("Seek: " + seekMovement);
@@ -52,18 +58,15 @@ public class NPCBehaviour : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
     }
 
-    private Vector3 GetFleeMovement(Vector3 targetPosition)
-    {
+    private Vector3 GetFleeMovement(Vector3 targetPosition) {
         return (transform.position - targetPosition);
     }
 
-    private Vector3 GetSeekMovement(Vector3 targetPosition)
-    {
+    private Vector3 GetSeekMovement(Vector3 targetPosition) {
         return (targetPosition - transform.position);
     }
 
-    private Vector3 GetAvoidCollissionMovement()
-    {
+    private Vector3 GetAvoidCollissionMovement() {
         Vector3 movement = Vector3.zero;
         RaycastHit2D hit = Physics2D.Linecast(
             transform.position
@@ -72,11 +75,14 @@ public class NPCBehaviour : MonoBehaviour
             );
 
         Debug.DrawLine(transform.position, transform.position + transform.forward * sightRadius, Color.green);
-        if (hit && hit.transform != transform)
-        {
+        if (hit && hit.transform != transform) {
             movement = hit.normal * 2f;
         }
         return movement;
+    }
+
+    public void SetOnAlert(bool alert) {
+        onAlert = alert;
     }
 
 }

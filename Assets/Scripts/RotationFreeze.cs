@@ -7,11 +7,10 @@ public class RotationFreeze : MonoBehaviour {
 
 	void Start () {
         rotation = transform.rotation;
-        Debug.Log("Rotation: " + rotation); 
 	}
 	
 	
-	void FixedUpdate () {
+	void Update () {
         transform.rotation = rotation;
 	}
 }

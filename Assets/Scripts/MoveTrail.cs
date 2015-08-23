@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class MoveTrail : MonoBehaviour {
-    public int moveSpeed = 230;
+    public int moveSpeed = 100;
 
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
-        Destroy(gameObject, 1);
+        transform.Translate(transform.forward * Time.deltaTime * moveSpeed);
+        Destroy(gameObject, 2f);
 	}
 }

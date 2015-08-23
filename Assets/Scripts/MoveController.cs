@@ -5,35 +5,25 @@ using System.Collections;
 [RequireComponent(typeof (BoxCollider2D))]
 
 public class MoveController : MonoBehaviour {
-	private Rigidbody2D rigidBody;
 	[SerializeField]
 	private float walkSpeed = 2f;
+    [SerializeField]
     private float euphoricSpeed = 6f;
-	private bool isEuphoric = false;
-    Vector3 mousePos;
+	private Rigidbody2D rigidBody;
+    private EuphoriaController euphoriaController;
+    private Vector3 mousePos;
 
 	public void Start () {
 		walkSpeed = 4f;
 		rigidBody = GetComponent<Rigidbody2D> ();
 		rigidBody.gravityScale = 0f;
+        euphoriaController = GetComponent<EuphoriaController>();
 	}
-
-	public void SetEuphoric(){
-		this.isEuphoric = true;
-	}
-
-	public void SetNotEuphoric(){
-		this.isEuphoric = false;
-	}
-
-    public bool IsEuphoric() {
-        return isEuphoric;
-    }
 
 	public void Update(){
 		Vector2 movement = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 
-		if (isEuphoric) {
+		if (euphoriaController.IsEuphoric()) {
 			this.rigidBody.velocity = movement.normalized * this.euphoricSpeed; 
 		} else {
 			this.rigidBody.velocity = movement.normalized * this.walkSpeed; 

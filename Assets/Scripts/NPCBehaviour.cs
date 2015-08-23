@@ -7,6 +7,7 @@ public class NPCBehaviour : MonoBehaviour
 {
     protected Rigidbody2D rigidBody;
     protected Transform playerTransform;
+    protected EuphoriaController playerMoveController;
     [SerializeField]
     protected bool onAlert;
     protected float sightRadius = 5f;
@@ -17,6 +18,14 @@ public class NPCBehaviour : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerMoveController = GameObject.FindGameObjectWithTag("Player").GetComponent<EuphoriaController>();
+    }
+
+    public void Update()
+    {
+        if (!onAlert)
+            onAlert = playerMoveController.IsEuphoric();
+        
     }
 
     protected void Seek(float speed, Vector3 targetPosition)

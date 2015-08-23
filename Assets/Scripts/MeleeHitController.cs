@@ -7,7 +7,8 @@ public class MeleeHitController : MonoBehaviour {
     BoxCollider2D playerBC;
     float attackSwing;
     float attackCounter;
-    public EuphoriaController euphoriaController;
+    private EuphoriaController euphoriaController;
+    private ScoreController scoreController;
     public bool attacking;
 
 
@@ -18,6 +19,7 @@ public class MeleeHitController : MonoBehaviour {
         this.transform.position = playerT.transform.position + (playerT.transform.right * (playerBC.size.x/2 + area.size.y/2));
         attacking = false;
         euphoriaController = GetComponentInParent<EuphoriaController>();
+        scoreController = GetComponentInParent<ScoreController>();
         attackCounter = 0f;
         attackSwing = 0.5f;
     }
@@ -38,6 +40,7 @@ public class MeleeHitController : MonoBehaviour {
         if ((other.tag == "Cop" || other.tag == "Civilian") && attacking == true) {
             Object.Destroy(other.gameObject);
             euphoriaController.IncrementEuphoria(20);
+            scoreController.IncrementScore(10f);
         }
     }
 }

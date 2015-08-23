@@ -6,6 +6,7 @@ public class MoveTrail : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("Bullet rot:" + transform.rotation.eulerAngles);
         transform.Translate(transform.right * Time.deltaTime * moveSpeed);
         Destroy(gameObject, 2f);
 	}

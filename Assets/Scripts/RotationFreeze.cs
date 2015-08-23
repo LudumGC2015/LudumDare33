@@ -11,6 +11,6 @@ public class RotationFreeze : MonoBehaviour {
 	
 	
 	void Update () {
-        transform.rotation = rotation;
-	}
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
 }

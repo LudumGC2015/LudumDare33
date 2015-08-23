@@ -22,6 +22,7 @@ public class CopBehaviour : NPCBehaviour {
     private float reloadCounter;
     private EuphoriaController euphoriaController;
     private BulletGenerator bulletGenerator;
+    private AudioSource shotSound;
 
     new void Start() {
         base.Start();
@@ -31,6 +32,7 @@ public class CopBehaviour : NPCBehaviour {
         patrolEndPosition = transform.position + transform.right * 5f;
         euphoriaController = GameObject.FindGameObjectWithTag("Player").GetComponent<EuphoriaController>();
         bulletGenerator = GetComponentInChildren<BulletGenerator>();
+        shotSound = GetComponent<AudioSource>();
         reloadCounter = reloadTime;
     }
 
@@ -78,11 +80,13 @@ public class CopBehaviour : NPCBehaviour {
     }
 
     void Effect() {
-        bulletGenerator.Generate();
+        //bulletGenerator.Generate();
+
         Debug.DrawLine(transform.position, playerTransform.position, Color.red);
     }
 
     void Shoot() {
+        shotSound.Play();
         euphoriaController.DecrementEuphoria(damage);
     }
 

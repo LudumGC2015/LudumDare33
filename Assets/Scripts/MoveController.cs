@@ -21,6 +21,7 @@ public class MoveController : MonoBehaviour {
 	}
 
 	public void Update(){
+        if (euphoriaController.IsDead()) return;
 		Vector2 movement = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 
 		if (euphoriaController.IsEuphoric()) {

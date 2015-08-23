@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 577212bfa0ce7e34a8cd5b972d0c68ba
-timeCreated: 1440329027
+timeCreated: 1440353791
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Sprites-aun-mas-grandes_0
+    21300002: Sprites-aun-mas-grandes_1
+    21300004: Sprites-aun-mas-grandes_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,13 +55,33 @@ TextureImporter:
     - name: Sprites-aun-mas-grandes_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1240
-        height: 1748
-      alignment: 2
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        x: 48
+        y: 937
+        width: 276
+        height: 423
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 3}
+    - name: Sprites-aun-mas-grandes_1
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 937
+        width: 276
+        height: 423
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 8, w: 0}
+    - name: Sprites-aun-mas-grandes_2
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 940
+        width: 276
+        height: 423
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 6}
   spritePackingTag: 
   userData: 
   assetBundleName: 

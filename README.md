@@ -1,4 +1,4 @@
-####################EXPLICACION DE LOS PREFABS###################
+#EXPLICACION DE LOS PREFABS
 
 XSpawnePoint: genera personajes. Tienen spawn rate.
 Build: un edificio con collider

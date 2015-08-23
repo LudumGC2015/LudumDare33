@@ -37,10 +37,21 @@ public class MeleeHitController : MonoBehaviour {
     }
 
     public void OnTriggerStay2D (Collider2D other) {
-        if ((other.tag == "Cop" || other.tag == "Civilian") && attacking == true) {
+        if (!attacking) return;
+        if (other.tag == "Cop") {
+            if(euphoriaController.IsEuphoric()) {
+                Object.Destroy(other.gameObject);
+                euphoriaController.IncrementEuphoria(20);
+                scoreController.IncrementScore(10f);
+            }
+        } else if (other.tag == "Civilian") {
             Object.Destroy(other.gameObject);
-            euphoriaController.IncrementEuphoria(20);
-            scoreController.IncrementScore(10f);
+            euphoriaController.IncrementEuphoria(10);
+            scoreController.IncrementScore(5f);
         }
+    }
+
+    public bool IsAttacking() {
+        return attacking;
     }
 }

@@ -35,6 +35,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &116932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 457516}
+  - 114: {fileID: 11442174}
+  m_Layer: 2
+  m_Name: BulletOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &138286
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,6 +60,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 403776}
   - 114: {fileID: 11484380}
+  - 58: {fileID: 5861770}
   m_Layer: 2
   m_Name: Eyes
   m_TagString: Untagged
@@ -63,6 +80,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 484282}
   m_RootOrder: 0
+--- !u!4 &457516
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .439999998, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 484282}
+  m_RootOrder: 2
 --- !u!4 &484282
 Transform:
   m_ObjectHideFlags: 1
@@ -71,10 +100,11 @@ Transform:
   m_GameObject: {fileID: 110500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 403776}
   - {fileID: 499256}
+  - {fileID: 457516}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &499256
@@ -100,11 +130,24 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5861770
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138286}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!61 &6164952
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -117,19 +160,35 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .5, y: 1}
 --- !u!114 &11400158
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110500}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478df6f8aa801c9458bd11203eb873e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAlert: 0
+  walkSpeed: 2
+  runSpeed: 4
+  attackDistance: 7
+  reloadTime: 1
+  damage: 25
+--- !u!114 &11442174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70afae5c212e654b8eb969ee8914719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTrail: {fileID: 420672, guid: dd041e9302ad1f44eacd0c7d462074eb, type: 2}
 --- !u!114 &11469538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c9d896f77d60a4cbbec9dd36a00282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sightRadius: 3
 --- !u!212 &21219408
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -190,6 +250,38 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: a3275e055c149f54b8a5f4fbfff326ef,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletTrail
+      value: 
+      objectReference: {fileID: 420672, guid: dd041e9302ad1f44eacd0c7d462074eb, type: 2}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sightRadius
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110500}

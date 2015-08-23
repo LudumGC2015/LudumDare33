@@ -37,7 +37,7 @@ public class EuphoriaController : MonoBehaviour {
             isEuphoric = false;
         }
         if (euphoriaValue > 0 && isEuphoric) {
-            euphoriaValue -= 10 * Time.deltaTime;
+            euphoriaValue -= 5f * Time.deltaTime;
         }
     }
 }

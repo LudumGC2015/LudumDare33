@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 6b5ecd646175f0141949df8047d66c17
-timeCreated: 1440324400
+guid: 2f1f2adc0a1ba494098c74e108595b99
+timeCreated: 1440326018
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Sprites-Ciudad_0
-    21300002: Sprites-Ciudad_1
-    21300004: Sprites-Ciudad_2
-    21300006: Sprites-Ciudad_3
+    21300000: Sprites-Ciudad-mas-grandes_0
+    21300002: Sprites-Ciudad-mas-grandes_1
+    21300004: Sprites-Ciudad-mas-grandes_2
+    21300006: Sprites-Ciudad-mas-grandes_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -47,49 +47,49 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Sprites-Ciudad_0
+    - name: Sprites-Ciudad-mas-grandes_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 217
-        width: 56
-        height: 123
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sprites-Ciudad_1
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 164
-        width: 107
-        height: 176
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sprites-Ciudad_2
-      rect:
-        serializedVersion: 2
-        x: 214
-        y: 164
+        x: 1
+        y: 293
         width: 110
-        height: 176
+        height: 230
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 1, z: 0, w: 0}
-    - name: Sprites-Ciudad_3
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sprites-Ciudad-mas-grandes_1
       rect:
         serializedVersion: 2
-        x: 336
-        y: 13
-        width: 107
-        height: 174
+        x: 159
+        y: 196
+        width: 220
+        height: 327
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sprites-Ciudad-mas-grandes_2
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 194
+        width: 225
+        height: 328
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sprites-Ciudad-mas-grandes_3
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 197
+        width: 218
+        height: 327
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

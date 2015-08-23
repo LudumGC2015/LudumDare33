@@ -1,40 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(CircleCollider2D))]
 public class EyeController : MonoBehaviour {
-    protected CircleCollider2D visionRadius;
+    protected CircleCollider2D visionArea;
     protected bool sighted = false;
     protected bool suspicious = false;
-    void Start () {
-        visionRadius = GetComponent<CircleCollider2D>();
-	}
-	
-    void OnTriggerEnter2D (Collider2D other)
-    {
-        if(other.tag == "Player")
-        {
+    [SerializeField]
+    private float sightRadius = 5f;
+
+    void Start() {
+        visionArea = GetComponent<CircleCollider2D>();
+        visionArea.radius = sightRadius;
+        visionArea.isTrigger = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "Player") {
             sighted = true;
         }
     }
-    
-    void OnTriggerExit2D (Collider2D other)
-    {
-        if(other.tag == "Player") 
-            {
-                sighted = false;
-            }
+
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.tag == "Player") {
+            sighted = false;
+        }
     }
 
-	// Update is called once per frame
-	void Update () {
-        if (sighted == true)
-        {
-            // Aqui la logica sospechosa
-        }
-	}
-
-    public bool PlayerInSight()
-    {
+    public bool PlayerInSight() {
         return sighted;
     }
+
 }

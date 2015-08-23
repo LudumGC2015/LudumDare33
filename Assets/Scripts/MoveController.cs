@@ -10,11 +10,12 @@ public class MoveController : MonoBehaviour {
 	private float walkSpeed = 2f;
     private float euphoricSpeed = 6f;
 	private bool isEuphoric = false;
+    Vector3 mousePos;
 
 	public void Start () {
-		this.walkSpeed = 4f;
-		this.rigidBody = GetComponent<Rigidbody2D> ();
-		this.rigidBody.gravityScale = 0f;
+		walkSpeed = 4f;
+		rigidBody = GetComponent<Rigidbody2D> ();
+		rigidBody.gravityScale = 0f;
 	}
 
 	public void SetEuphoric(){
@@ -29,7 +30,7 @@ public class MoveController : MonoBehaviour {
         return isEuphoric;
     }
 
-	public void FixedUpdate(){
+	public void Update(){
 		Vector2 movement = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 
 		if (isEuphoric) {
@@ -37,5 +38,11 @@ public class MoveController : MonoBehaviour {
 		} else {
 			this.rigidBody.velocity = movement.normalized * this.walkSpeed; 
 		}
-	}
+        mousePos = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        /* if (rigidBody.velocity != Vector2.zero)
+            transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
+        Debug.DrawLine(transform.position, transform.position + transform.forward * 5f, Color.green);*/
+    }
 }

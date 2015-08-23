@@ -41,8 +41,5 @@ public class MoveController : MonoBehaviour {
         mousePos = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        /* if (rigidBody.velocity != Vector2.zero)
-            transform.rotation = Quaternion.LookRotation(rigidBody.velocity);
-        Debug.DrawLine(transform.position, transform.position + transform.forward * 5f, Color.green);*/
     }
 }

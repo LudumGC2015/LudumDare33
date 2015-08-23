@@ -34,8 +34,8 @@ public class MeleeHitController : MonoBehaviour {
         }
     }
 
-    void OnTriggerStay (Collider other) {
-        if(other.gameObject.tag == "Enemy" && attacking == true) {
+    public void OnTriggerStay2D (Collider2D other) {
+        if ((other.tag == "Cop" || other.tag == "Civilian") && attacking == true) {
             Object.Destroy(other.gameObject);
             euphoriaController.IncrementEuphoria(20);
         }

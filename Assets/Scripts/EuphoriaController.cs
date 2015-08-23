@@ -1,48 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EuphoriaController : MonoBehaviour {
-	
-	private float euphoriaValue;
-	private float euphoriaMaximumValue;
-	private MoveController playerMoveController;
-	
-	public void Start () {
-		this.euphoriaValue  = 0f;
-		this.euphoriaMaximumValue = 100f;
-		this.playerMoveController = this.GetComponent<MoveController>();
-	}
+public class EuphoriaController : MonoBehaviour
+{
+    private float euphoriaValue;
+    private float maxEuphoria = 100f;
+    private MoveController moveController;
 
-	public void IncrementEuphoria (float increment){
+    public void Start()
+    {
+        euphoriaValue = 0f;
+        moveController = GetComponent<MoveController>();
+    }
 
-		if (increment + euphoriaValue > euphoriaMaximumValue){
-			this.euphoriaValue = this.euphoriaMaximumValue;
-		}else {
-			this.euphoriaValue += increment;
-		}
-	}
+    public void IncrementEuphoria(float increment)
+    {
 
-	public void DecrementEuphoria (float decrement){
-		if (euphoriaValue - decrement < 0){
-			this.euphoriaValue = 0f;
-		}else {
-			this.euphoriaValue -= decrement;
-		}
-	}
+        euphoriaValue = Mathf.Clamp(euphoriaValue + increment, 0f, maxEuphoria);
+    }
 
-	public float getEuphoriaValue(){
-		return this.euphoriaValue;
-	}
+    public void DecrementEuphoria(float decrement)
+    {
+        euphoriaValue = Mathf.Clamp(euphoriaValue - decrement, 0f, maxEuphoria);
+    }
 
-	public void Update () {
+    public float getEuphoriaValue()
+    {
+        return euphoriaValue;
+    }
 
-        if (euphoriaValue == 100) {
-			playerMoveController.SetEuphoric();
-        } else if (euphoriaValue == 0) {
-			playerMoveController.SetNotEuphoric();
-        }	
-        if(euphoriaValue > 0 && playerMoveController.IsEuphoric()) {
-            euphoriaValue -= 10*Time.deltaTime;
+    public void Update()
+    {
+
+        if (euphoriaValue >= 100)
+        {
+            moveController.SetEuphoric();
         }
-	}
+        else if (euphoriaValue <= 0)
+        {
+            moveController.SetNotEuphoric();
+        }
+        if (euphoriaValue > 0 && moveController.IsEuphoric())
+        {
+            euphoriaValue -= 10 * Time.deltaTime;
+        }
+    }
 }

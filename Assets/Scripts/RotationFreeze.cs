@@ -6,7 +6,7 @@ public class RotationFreeze : MonoBehaviour {
     Quaternion rotation;
 
 	void Start () {
-        rotation = transform.rotation;
+        rotation = Quaternion.Euler(Vector3.zero);
 	}
 	
 	

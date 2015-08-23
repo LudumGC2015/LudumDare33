@@ -40,13 +40,13 @@ public class NPCBehaviour : MonoBehaviour {
     protected void Seek(float speed, Vector3 targetPosition) {
         Vector2 movement = GetSeekMovement(targetPosition).normalized * speed;
         rigidBody.velocity = movement;
-        rotation = Quaternion.LookRotation(movement);
+        transform.rotation = Quaternion.LookRotation(movement);
     }
 
     protected void Flee(float speed, Vector3 targetPosition) {
         Vector2 movement = GetFleeMovement(targetPosition).normalized * speed;
         rigidBody.velocity = movement;
-        rotation = Quaternion.LookRotation(movement);
+        transform.rotation = Quaternion.LookRotation(movement);
     }
 
     protected void SeekAndAvoidCollission(float speed, Vector3 targetPosition) {

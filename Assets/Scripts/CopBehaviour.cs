@@ -78,7 +78,6 @@ public class CopBehaviour : NPCBehaviour {
     }
 
     void Effect() {
-        Quaternion rotation = Quaternion.LookRotation(playerTransform.position - transform.position);
         bulletGenerator.Generate();
         Debug.DrawLine(transform.position, playerTransform.position, Color.red);
     }

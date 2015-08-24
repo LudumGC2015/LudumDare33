@@ -45,12 +45,12 @@ public class MeleeHitController : MonoBehaviour {
             if(euphoriaController.IsEuphoric()) {
                 Object.Destroy(other.gameObject);
                 euphoriaController.IncrementEuphoria(40);
-                scoreController.IncrementScore(10f);
+                scoreController.IncrementScore(10f+0.4f * euphoriaController.getEuphoriaValue());
             }
         } else if (other.tag == "Civilian") {
             Object.Destroy(other.gameObject);
             euphoriaController.IncrementEuphoria(20);
-            scoreController.IncrementScore(5f);
+            scoreController.IncrementScore(5f+0.2f*euphoriaController.getEuphoriaValue());
         }
     }
 

@@ -9,6 +9,10 @@ TagManager:
   - Obstacle
   - Civilian
   - Enemy
+  - EuphoriaBar
+  - EuphoriaPanel
+  - EuphoriaBackground
+  - BulletOrigin
   layers:
   - Default
   - TransparentFX

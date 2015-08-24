@@ -23,6 +23,9 @@ public class CopBehaviour : NPCBehaviour {
     private EuphoriaController euphoriaController;
     private BulletGenerator bulletGenerator;
     private AudioSource shotSound;
+    private BangController bangC;
+    float spriteCounter = 0f;
+    float spriteTime = 0.2f;
 
     new void Start() {
         base.Start();
@@ -34,6 +37,7 @@ public class CopBehaviour : NPCBehaviour {
         bulletGenerator = GetComponentInChildren<BulletGenerator>();
         shotSound = GetComponent<AudioSource>();
         reloadCounter = reloadTime;
+        bangC = GetComponentInChildren<BangController>();
     }
 
     new public void Update() {
@@ -43,6 +47,13 @@ public class CopBehaviour : NPCBehaviour {
         }
         else {
             Patrol();
+        }
+        if (spriteCounter > 0)
+        {
+            spriteCounter -= Time.deltaTime;
+        }
+        else if (spriteCounter <= 0) {
+            bangC.NoBang();
         }
     }
 
@@ -75,6 +86,8 @@ public class CopBehaviour : NPCBehaviour {
             reloadCounter = reloadTime;
             if (hit  && hit.transform.tag == "Player") {
                 Shoot();
+                bangC.GoBang();
+                spriteCounter = spriteTime;
             }
         }
     }

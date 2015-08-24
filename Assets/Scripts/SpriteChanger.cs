@@ -22,7 +22,6 @@ public class SpriteChanger : MonoBehaviour {
             if (playerTransform.rotation.eulerAngles.z >= 225 && playerTransform.rotation.eulerAngles.z <= 315)
             {
                 spriteR.sprite = sprites[0];
-                Debug.Log("Miro abajo");
             }
             else if (playerTransform.rotation.eulerAngles.z < 225 && playerTransform.rotation.eulerAngles.z >= 135)
             {
@@ -33,7 +32,6 @@ public class SpriteChanger : MonoBehaviour {
                 spriteR.sprite = sprites[3];
             }
             else spriteR.sprite = sprites[1];
-            Debug.Log(playerTransform.rotation.eulerAngles.z);
         }
         else if (playerTransform.rotation.eulerAngles.z > 180)
         {

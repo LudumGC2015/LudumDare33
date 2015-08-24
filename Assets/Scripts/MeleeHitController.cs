@@ -5,6 +5,7 @@ public class MeleeHitController : MonoBehaviour {
     BoxCollider2D area;
     Transform playerT;
     BoxCollider2D playerBC;
+    SwordSlashController slashController;
     float attackSwing;
     float attackCounter;
     private EuphoriaController euphoriaController;
@@ -20,6 +21,7 @@ public class MeleeHitController : MonoBehaviour {
         attacking = false;
         euphoriaController = GetComponentInParent<EuphoriaController>();
         scoreController = GetComponentInParent<ScoreController>();
+        slashController = GetComponentInChildren<SwordSlashController>();
         attackCounter = 0f;
         attackSwing = 0.5f;
     }
@@ -28,9 +30,10 @@ public class MeleeHitController : MonoBehaviour {
         if (Input.GetMouseButton(0) == true && attackCounter <= 0) {
             attackCounter = attackSwing;
             attacking = true;
-            //Llamar a la animacion de ataque
+            slashController.Slash();
         } else if (attackCounter <= 0) {
             attacking = false;
+            slashController.StopSlash();
         } else {
             attackCounter -= Time.deltaTime;
         }
@@ -41,12 +44,12 @@ public class MeleeHitController : MonoBehaviour {
         if (other.tag == "Cop") {
             if(euphoriaController.IsEuphoric()) {
                 Object.Destroy(other.gameObject);
-                euphoriaController.IncrementEuphoria(20);
+                euphoriaController.IncrementEuphoria(40);
                 scoreController.IncrementScore(10f);
             }
         } else if (other.tag == "Civilian") {
             Object.Destroy(other.gameObject);
-            euphoriaController.IncrementEuphoria(10);
+            euphoriaController.IncrementEuphoria(20);
             scoreController.IncrementScore(5f);
         }
     }

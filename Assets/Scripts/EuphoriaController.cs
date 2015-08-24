@@ -6,10 +6,12 @@ public class EuphoriaController : MonoBehaviour {
     private float maxEuphoria = 100f;
     private bool isEuphoric;
     private bool dead = false;
+    private SpriteChanger spriteC;
 
     public void Start() {
         euphoriaValue = 0f;
         isEuphoric = false;
+        spriteC = GetComponentInChildren<SpriteChanger>();
     }
 
     public void IncrementEuphoria(float increment) {
@@ -36,9 +38,11 @@ public class EuphoriaController : MonoBehaviour {
 
         if (euphoriaValue >= 100) {
             isEuphoric = true;
+            spriteC.GoEuphoric();
         }
         else if (euphoriaValue <= 0) {
             isEuphoric = false;
+            spriteC.ChillOut();
         }
         if (euphoriaValue > 0 && isEuphoric) {
             euphoriaValue -= 5f * Time.deltaTime;
